@@ -1,7 +1,3 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-
-
-
 const AuthWrapper = (props: any) => {
     return (
         <div className="flex flex-wrap h-screen">
@@ -9,7 +5,7 @@ const AuthWrapper = (props: any) => {
                 <div className="">
                     <div className="mb-[20px]">
                         <p className="text-[40px] font-bold">{props.FormType}</p>
-                        <p className="">How do i get started with retailcity ...</p>
+                        <p className="">How do i get started with retailcity, just watch this space..</p>
                     </div>
                     
                     <div>{props.children}</div>
@@ -21,7 +17,8 @@ const AuthWrapper = (props: any) => {
         </div>
         
     );
-    
+
+
 }
 
 export default AuthWrapper;
