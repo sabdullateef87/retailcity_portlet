@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import AuthWrapper from "../AuthWrapper";
 
 interface IFormInput {
@@ -8,44 +9,55 @@ interface IFormInput {
 const initialState = {
   email: "",
   password: "",
-}
+};
 
 const Register = (props: any) => {
-  
+  const navigate = useNavigate();
   const [userInfo, setUserInfo] = React.useState(initialState);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setUserInfo(initialState);
-  }
+  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setUserInfo({...userInfo, [e.target.name]: e.target.value})
-  }
-
-  
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
+  const navigateToLogin = () => {
+    navigate("/login");
+  };
 
   return (
-
     <AuthWrapper FormType="Register">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col mb-[10px]">
           <label>Email</label>
-          <input type="text" className="border-rounded border-2 px-3" onChange={handleChange} name="email"/>
+          <input
+            type="text"
+            className="border-rounded border-2 px-3"
+            onChange={handleChange}
+            name="email"
+          />
         </div>
         <div className="flex flex-col mb-[30px]">
           <label>Password</label>
-          <input type="password" className="border-rounded border-2 px-3" onChange={handleChange} name="password"/>
+          <input
+            type="password"
+            className="border-rounded border-2 px-3"
+            onChange={handleChange}
+            name="password"
+          />
         </div>
         <div className="flex justify-between items-center">
-          <button onClick={handleSubmit} className="rounded-md bg-[blue] border-2 px-8 py-3 text-white cursor-pointer">
+          <button
+            onClick={handleSubmit}
+            className="rounded-md bg-[blue] border-2 px-8 py-3 text-white cursor-pointer"
+          >
             Login
           </button>
-          <p>Forget Password ?</p>
+          <p onClick={navigateToLogin}>Already have an account ?</p>
         </div>
-        
-    </form>
+      </form>
     </AuthWrapper>
-      
   );
-}
+};
 
 export default Register;

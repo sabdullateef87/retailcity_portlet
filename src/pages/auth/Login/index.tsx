@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import AuthWrapper from "../AuthWrapper";
 
 interface IFormInput {
@@ -12,6 +13,7 @@ const initialState = {
 
 const Login = (props: any) => {
   
+  const navigate = useNavigate();
   const [userInfo, setUserInfo] = React.useState(initialState);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,7 +41,8 @@ const Login = (props: any) => {
           <button onClick={handleSubmit} className="rounded-md bg-[blue] border-2 px-8 py-3 text-white cursor-pointer">
             Login
           </button>
-          <p>Forget Password ?</p>
+
+          <p onClick = {() => navigate("/forgot_password")}>Forget Password ?</p>
         </div>
         
     </form>
